@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build ./recipe-app-backend --file Dockerfile --tag registry.digitalocean.com/frxdrics-dev/sipsociety:$(date +%s)
+      run: docker build ./recipe-app-backend --file ./recipe-app-backend/Dockerfile --tag registry.digitalocean.com/frxdrics-dev/sipsociety:$(date +%s)
