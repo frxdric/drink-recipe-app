@@ -1,0 +1,156 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: linear-gradient(99deg, rgba(254,254,254,1) 0%, rgba(182,202,202,1) 100%);
+  color: rgb(35, 19, 19);
+}
+
+.app {
+  height: 100%;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: linear-gradient(99deg, rgba(254,254,254,1) 0%, rgba(182,202,202,1) 100%);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  color:#1e1e1e
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgb(18, 4, 4);
+  font-style: italic;
+  font-family:'Segoe UI', Tahoma, Montserrat, Verdana, sans-serif
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: rgb(7, 7, 4);
+  font-size: 1em;
+}
+
+.nav a:hover {
+  color: #aaa;
+}
+
+.submit-button {
+  background-size: 200% auto;
+  padding: 10px 20px;
+  text-align: center;
+  transition: 0.5s;
+  text-transform: uppercase;
+  background-image: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(242,179,44,1) 100%);
+  color: black;
+  box-shadow: 0 0 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.submit-button:hover {
+  background-image: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(242,179,44,1) 100%);
+}
+
+/* Hero Section Styling */
+.hero {
+  background: url('./assets/lindsay-cotter-fXkmfjaowOw-unsplash.jpg') repeat center center/cover;
+  height: 115vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 700px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+/*Featured Cocktails Section */
+
+.featured-cocktails {
+  padding: 40px;
+  background-color: #F8F8FF;
+  text-align: center;
+}
+
+.featured-cocktails h2 {
+  font-size: 2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+  color: rgb(2, 2, 1);
+}
+
+.cocktail-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cocktail-card {
+  background-image: linear-gradient(99deg, rgba(254,254,254,1) 0%, rgba(205,198,205,1) 100%);;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cocktail-card img {
+  width: 100%;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.cocktail-card h3 {
+  margin-top: 15px;
+  font-size: 1.5em;
+  color: rgb(105, 97, 50);
+}
+
+.cocktail-card p {
+  font-size: 1em;
+  color: #0a0404;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  color:#0a0404
+}
