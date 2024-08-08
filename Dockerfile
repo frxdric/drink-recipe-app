@@ -18,7 +18,7 @@ WORKDIR /usr/src/app
 FROM base as frontend 
 COPY ./drink-app-frontend /usr/src/app/
 RUN npm install 
-RUN npm build
+RUN npm run build
 ################################################################################
 # Create a stage for installing production dependecies.
 FROM base as deps
