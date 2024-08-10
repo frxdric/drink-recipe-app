@@ -1,4 +1,4 @@
-// src/components/RecipeForm.tsx
+
 import React, { useState, useContext } from 'react';
 import { RecipeContext } from '../context/RecipeContext';
 import './recipeform.css';
@@ -11,29 +11,63 @@ const RecipeForm: React.FC = () => {
     instructions: '',
     submitterName: '',
     email: '',
-    image: ''
+    image: null as File | null,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFormData({
+        ...formData,
+        image: e.target.files[0], 
+      });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addRecipe(formData);
-    alert('Recipe submitted successfully!');
-    setFormData({
-      name: '',
-      ingredients: '',
-      instructions: '',
-      submitterName: '',
-      email: '',
-      image: ''
-    });
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const newRecipe = {
+        ...formData,
+        image: reader.result as string,
+      };
+      addRecipe(newRecipe); 
+      alert('Recipe submitted successfully!');
+      setFormData({
+        name: '',
+        ingredients: '',
+        instructions: '',
+        submitterName: '',
+        email: '',
+        image: null,
+      });
+    };
+    if (formData.image) {
+      reader.readAsDataURL(formData.image);
+    } else {
+      
+      addRecipe({
+        ...formData,
+        image: null, 
+      });
+      setFormData({
+        name: '',
+        ingredients: '',
+        instructions: '',
+        submitterName: '',
+        email: '',
+        image: null,
+      });
+    }
   };
 
   return (
@@ -77,12 +111,15 @@ const RecipeForm: React.FC = () => {
           onChange={handleChange}
         />
         <input
-          type="text"
-          name="image"
-          placeholder="Image Filename (e.g., mojito.jpg)"
-          value={formData.image}
-          onChange={handleChange}
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
         />
+        {formData.image && (
+          <div className="image-preview">
+            <img src={URL.createObjectURL(formData.image)} alt="Image Preview" />
+          </div>
+        )}
         <button type="submit">Submit Recipe</button>
       </form>
     </div>
