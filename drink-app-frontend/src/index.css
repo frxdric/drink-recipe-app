@@ -173,3 +173,120 @@ body, html {
   margin: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
 }
+
+@media screen and (max-width: 768px) {
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    background-attachment: scroll;
+    background-position: center center;
+  }
+
+  .app {
+    min-height: 100dvh;
+    height: auto;
+  }
+
+ 
+  .header {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+    text-align: center;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav a {
+    margin: 0;
+    font-size: 0.85rem;
+    padding: 6px 4px;
+  }
+
+  .submit-button {
+    margin-left: 0;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  
+  .hero {
+    min-height: 55dvh;
+    height: auto;
+    padding: 36px 16px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .featured-cocktails {
+    padding: 28px 16px;
+    border-radius: 8px;
+  }
+
+  .featured-cocktails h2 {
+    font-size: 1.5rem;
+  }
+
+  .cocktail-cards {
+    gap: 16px;
+  }
+
+  .cocktail-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 16px;
+  }
+
+  .cocktail-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  input,
+  textarea,
+  select {
+    max-width: 100%;
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  
+  .footer {
+    margin: 12px;
+    padding: 18px 12px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+}
