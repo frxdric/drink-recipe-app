@@ -54,24 +54,23 @@ RUN npx prisma generate
 # where the necessary files are copied from the build stage.
 FROM base as final
 
-# Use production node environment by default.
-ENV NODE_ENV production
 
-# Run the application as a non-root user.
-USER node
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
 
-# Copy package.json so that package manager commands can be used.
-COPY ./recipe-app-backend/package.json .
-COPY --from=frontend /usr/src/app/dist ./client
-# Copy the production dependencies from the deps stage and also
-# the built application from the build stage into the image.
+COPY ./recipe-app-backend/package.json ./
 COPY --from=deps /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/./dist ././dist
-COPY --from=build /usr/src/app/node_modules/.prisma/client  ./node_modules/.prisma/client
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/node_modules/.prisma/client ./node_modules/.prisma/client
+COPY --from=frontend /usr/src/app/dist ./client
 
-# Expose the port that the application listens on.
+COPY ./recipe-app-backend/prisma ./prisma
+
+RUN npm install --no-save --ignore-scripts prisma@5.16.2
+
 EXPOSE 3000
 
-# Run the application.
-CMD npm run start:prod
+USER node
+
+CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy && npm run start:prod"]
 
